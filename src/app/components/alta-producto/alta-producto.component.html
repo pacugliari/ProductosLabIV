@@ -1,0 +1,34 @@
+<form [formGroup]="formProducto">
+    <label for="nombre">Descripcion:</label>
+    <input type="text" required formControlName="descripcion" name="descripcion">
+    <div *ngIf="formProducto.controls['descripcion'].errors?.['required'] && formProducto.controls['descripcion'].touched"  style="color: red;">
+        Descripcion es requerido
+    </div>
+
+    <label for="unidadPropia">Tipo</label>
+    <select class="form-control" formControlName="tipo" name="tipo">
+        <option value="liquido" selected>Liquido</option>
+        <option value="solido">Solido</option>
+    </select>
+    <div *ngIf="formProducto.controls['tipo'].errors?.['required'] && formProducto.controls['tipo'].touched"  style="color: red;">
+        Tipo es requerido
+    </div>
+
+    <label for="ingredientes">Fecha de vencimiento:</label>
+    <input type="date"  formControlName="fechaDeVencimiento" name="fechaDeVencimiento" required>
+    <div *ngIf="formProducto.controls['fechaDeVencimiento'].errors?.['required'] && formProducto.controls['fechaDeVencimiento'].touched"  style="color: red;">
+        Fecha de vencimiento es requerido
+    </div>
+
+
+    <label for="peso">Precio (entre 0 y 1000 $):</label>
+    <input type="number" formControlName="precio" name="precio" required min="0" max="1000" (change)="calcularPeso()">
+    <div *ngIf="formProducto.controls['precio'].errors?.['required'] && formProducto.controls['precio'].touched"  style="color: red;">
+        Precio es requerido
+    </div>
+    <div *ngIf="!esValidoPeso && formProducto.controls['precio'].dirty"  style="color: red;">
+        Precio no esta en el rango permitido
+    </div>
+</form>
+<br>
+<button type="button" class="w-100 btn btn-lg btn-outline-primary" (click)="alta()">Crear</button>

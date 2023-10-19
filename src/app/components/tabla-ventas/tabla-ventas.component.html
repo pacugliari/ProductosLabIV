@@ -1,0 +1,30 @@
+<div class="row">
+    <table >
+        <thead>
+          <tr>
+            <th>ID-Venta</th>
+            <th>Cantidad-Venta</th>
+            <th>Fecha de Venta</th>
+            <th>Descripcion-Producto</th>
+            <th>Tipo-Producto</th>
+            <th>Fecha de vencimiento-Producto</th>
+            <th>Precio-Producto</th>
+            <th>Foto-Producto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let venta of ventas">
+            <td>{{ venta.id }}</td>
+            <td>{{ venta.cantidad }}</td>
+            <td>{{ venta.fechaDeVenta }}</td>
+            <td>{{ venta.descripcion }}</td>
+            <td>{{ venta.tipo }}</td>
+            <td>{{ venta.fechaDeVencimiento | date: 'dd/MM/yyyy'}}</td>
+            <td>{{ venta.precio }}</td>
+            <td>
+              <img [src]="venta.rutaDeFoto" alt="{{ venta.descripcion }}" width="100">
+            </td>
+          </tr>
+        </tbody>
+    </table>
+</div>

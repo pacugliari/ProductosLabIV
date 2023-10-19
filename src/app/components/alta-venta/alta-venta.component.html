@@ -1,0 +1,24 @@
+<form [formGroup]="formVenta">
+    <label for="nombre">Cantidad:</label>
+    <input type="text" required formControlName="cantidad" name="cantidad">
+    <div *ngIf="formVenta.controls['cantidad'].errors?.['required'] && formVenta.controls['cantidad'].touched"  style="color: red;">
+        Cantidad es requerido
+    </div>
+
+    <label for="unidadPropia">Producto: </label>
+    <select class="form-control" formControlName="producto" name="producto">
+        <option *ngFor="let opcion of productos" [value]="opcion.descripcion">{{ opcion.descripcion }}</option>
+      </select>
+    <div *ngIf="formVenta.controls['producto'].errors?.['required'] && formVenta.controls['producto'].touched"  style="color: red;">
+        Producto es requerido
+    </div>
+
+    <label for="ingredientes">Fecha de venta:</label>
+    <input type="date"  formControlName="fechaDeVenta" name="fechaDeVenta" required>
+    <div *ngIf="formVenta.controls['fechaDeVenta'].errors?.['required'] && formVenta.controls['fechaDeVenta'].touched"  style="color: red;">
+        Fecha de venta es requerido
+    </div>
+
+</form>
+<br>
+<button type="button" class="w-100 btn btn-lg btn-outline-primary" (click)="alta()">Crear</button>

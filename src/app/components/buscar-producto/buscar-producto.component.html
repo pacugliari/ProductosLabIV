@@ -1,0 +1,18 @@
+<div class="container">
+    <h1>Buscar Productos por Descripción</h1>
+    
+    <!-- Barra de búsqueda -->
+    <form [formGroup]="formBuscar">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" formControlName="descripcion" name="descripcion" placeholder="Escribe una descripción...">
+            <div class="input-group-append">
+                <button class="btn btn-primary" id="searchButton" type="button" (click)="buscar()">Buscar</button>
+            </div>
+        </div>
+    </form>
+
+
+    <!-- Resultados de la búsqueda 
+    <div id="searchResults">
+    </div>-->
+</div>

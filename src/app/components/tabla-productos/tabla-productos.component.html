@@ -1,0 +1,30 @@
+<div class="row">
+    <table >
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Descripcion</th>
+            <th>Tipo</th>
+            <th>Fecha de vencimiento</th>
+            <th>Precio</th>
+            <th>Foto</th>
+            <th *ngIf="mostrarSeleccionar">Seleccionar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let producto of productos">
+            <td>{{ producto.id }}</td>
+            <td>{{ producto.descripcion }}</td>
+            <td>{{ producto.tipo }}</td>
+            <td>{{ producto.fechaDeVencimiento | date: 'dd/MM/yyyy'}}</td>
+            <td>{{ producto.precio }}</td>
+            <td>
+              <img [src]="producto.rutaDeFoto" alt="{{ producto.descripcion }}" width="100">
+            </td>
+            <td *ngIf="mostrarSeleccionar">
+                <app-borrar-producto [producto]="producto"></app-borrar-producto>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+</div>
